@@ -1,11 +1,14 @@
 
 const express = require("express");
 const cors = require("cors");
-const chatRoutes =
-  require("./routes/chat");
+const chatRoutes = require("./routes/chat");
+
+
 
 const conversationRoutes = require("./routes/conversations");
 const messageRoutes = require("./routes/message");
+
+const documentRoutes = require("./routes/document");
 
 const app = express();
 
@@ -15,7 +18,7 @@ app.use(express.json());
 app.use("/conversations", conversationRoutes);
 app.use("/messages", messageRoutes);
 app.use("/chat", chatRoutes);
-
+app.use("/document", documentRoutes);
 app.listen(3000, function (){
   console.log("Server running on port 3000");
 });
