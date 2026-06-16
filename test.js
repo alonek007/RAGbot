@@ -2,7 +2,7 @@ const { GoogleGenAI }= require("@google/genai");
 
 
 
-    const ai = new GoogleGenAI({apiKey:"AQ.Ab8RN6J5kb3gcOFtcSXohHzaNIr_FC_ZhbGnYA8alJeurfvLZw"});
+    const ai = new GoogleGenAI({apiKey:"xxxxxxx"});
 async function embedTxt(text) {
     const response = await ai.models.embedContent({
         model: 'gemini-embedding-2',
