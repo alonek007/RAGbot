@@ -1,17 +1,21 @@
-const { GoogleGenAI }= require("@google/genai");
+require("dotenv").config();
 
+const { GoogleGenAI } =
+  require("@google/genai");
 
+const ai =
+  new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY
+  });
 
-    const ai = new GoogleGenAI({apiKey:"xxxxxxx"});
-async function embedTxt(text) {
-    const response = await ai.models.embedContent({
-        model: 'gemini-embedding-2',
-        contents: text
+async function test() {
+  const response =
+    await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: "hello"
     });
 
-   return response.embeddings[0].values;
+  console.log(response.text);
 }
 
-
-module.exports = embedTxt;
-
+test();

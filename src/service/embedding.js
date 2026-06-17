@@ -5,7 +5,7 @@ const { GoogleGenAI }= require("@google/genai");
     const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 async function embedTxt(text) {
     const response = await ai.models.embedContent({
-        model: 'gemini-embedding-2',
+        model: 'gemini-embedding-001',
         contents: text
     });
 
