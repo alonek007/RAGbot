@@ -4,7 +4,8 @@ const pdf = require("pdf-parse");
 const path = require("path")
 const prisma = require("../prisma/client")
 const splitDocument = require("../service/chunking");
-const processDocument = require("../service/processing")
+const processDocument = require("../service/processing");
+const { storeChunks } = require("../service/vectorStore");
 
 const upload = multer({
     dest: "uploads/"
@@ -37,6 +38,9 @@ console.log(chunks);
   await processDocument(
     document.content
   );
+
+
+  await storeChunks( embeddedChunks, document.id);
 
 return res.json({
   chunks: embeddedChunks.length,

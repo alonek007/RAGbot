@@ -14,3 +14,4 @@ async function askGemini(prompt) {
 }
 
 module.exports = askGemini;
+
