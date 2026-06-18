@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const prisma = require("../prisma/client")
 const askGemini = require("../service/gemini");
+const retrieveChunks = require("../service/retrieval")
 
 
 router.post("/", async function(req, res) {
@@ -32,14 +33,34 @@ router.post("/", async function(req, res) {
       return `${msg.role}: ${msg.content}`
  })
   .join("\n");
-
+  const results = await retrieveChunks(
+    message)
+const context =
+  results
+    .map(function(doc) {
+      return doc.text;
+    })
+    .join("\n\n");
   const prompt = `
+
+  You are a RAG assistant.
+
+Answer ONLY using the provided context.
+
+If the answer is in the context, answer directly.
+
+If the answer is not in the context, say:
+"I don't know based on the provided context."
+
+
 ${history}
+Context:
+${context}
 
 user: ${message}
 assistant:
 `;
-
+console.log(prompt)
 const aiRes =
   await askGemini(prompt);
 
