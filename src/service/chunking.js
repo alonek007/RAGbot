@@ -3,7 +3,7 @@ const {RecursiveCharacterTextSplitter} = require("@langchain/textsplitters");
 
 
 async function splitDocument(text) {
-const splitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000, chunkOverlap: 200 })
+const splitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000, chunkOverlap: 200})
 return await  splitter.splitText(text)
 
 }

@@ -13,6 +13,7 @@
   "dependencies": {
     "@datastax/astra-db-ts": "^2.2.1",
     "@google/genai": "^2.8.0",
+    "@jojojoseph/toon-json-converter": "^2.0.3",
     "@langchain/textsplitters": "^1.0.1",
     "@prisma/client": "^6.19.3",
     "cors": "^2.8.6",
